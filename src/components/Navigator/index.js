@@ -2,9 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import faSearch from '@fortawesome/fontawesome-free-solid/faSearch';
-import faCode from '@fortawesome/fontawesome-free-solid/faCode';
-import faBook from '@fortawesome/fontawesome-free-solid/faBook';
-import faGithub from '@fortawesome/fontawesome-free-brands/faGithub';
 import { ExpandableListItem, ListItem } from 'components';
 import { classes } from 'common/util';
 import { actions } from 'reducers';
@@ -69,20 +66,19 @@ class Navigator extends React.Component {
   }
 
   render() {
-    const { categoriesOpened, scratchPaperOpened, query } = this.state;
+    const { categoriesOpened, query } = this.state;
     const { className } = this.props;
-    const { categories, scratchPapers } = this.props.directory;
-    const { algorithm, scratchPaper } = this.props.current;
+    const { categories } = this.props.directory;
+    const { algorithm } = this.props.current;
 
     const categoryKey = algorithm && algorithm.categoryKey;
     const algorithmKey = algorithm && algorithm.algorithmKey;
-    const gistId = scratchPaper && scratchPaper.gistId;
 
     return (
       <nav className={classes(styles.navigator, className)}>
         <div className={styles.search_bar_container}>
           <FontAwesomeIcon fixedWidth icon={faSearch} className={styles.search_icon}/>
-          <input type="text" className={styles.search_bar} aria-label="Search" placeholder="Search ..." autoFocus
+          <input type="text" className={styles.search_bar} aria-label="Search" placeholder="搜索 ..." autoFocus
                  value={query} onChange={e => this.handleChangeQuery(e)}/>
         </div>
         <div className={styles.algorithm_list}>
@@ -109,22 +105,6 @@ class Navigator extends React.Component {
               );
             })
           }
-        </div>
-        <div className={styles.footer}>
-          <ExpandableListItem icon={faCode} label="Scratch Paper" onClick={() => this.toggleScratchPaper()}
-                              opened={scratchPaperOpened}>
-            <ListItem indent label="New ..." to="/scratch-paper/new"/>
-            {
-              scratchPapers.map(scratchPaper => (
-                <ListItem indent key={scratchPaper.key} selected={scratchPaper.key === gistId}
-                          to={`/scratch-paper/${scratchPaper.key}`} label={scratchPaper.name}/>
-              ))
-            }
-          </ExpandableListItem>
-          <ListItem icon={faBook} label="API Reference"
-                    href="https://github.com/algorithm-visualizer/algorithm-visualizer/wiki"/>
-          <ListItem icon={faGithub} label="Fork me on GitHub"
-                    href="https://github.com/algorithm-visualizer/algorithm-visualizer"/>
         </div>
       </nav>
     );

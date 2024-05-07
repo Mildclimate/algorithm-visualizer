@@ -1,6 +1,5 @@
 import React from 'react';
 import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt';
-import faUser from '@fortawesome/fontawesome-free-solid/faUser';
 import { classes, extension } from 'common/util';
 import { actions } from 'reducers';
 import { connect } from 'react-redux';
@@ -22,7 +21,6 @@ class CodeEditor extends React.Component {
   render() {
     const { className } = this.props;
     const { editingFile } = this.props.current;
-    const { user } = this.props.env;
     const { lineIndicator } = this.props.player;
 
     if (!editingFile) return null;
@@ -56,20 +54,11 @@ class CodeEditor extends React.Component {
           }] : []}
           value={editingFile.content}/>
         <div className={classes(styles.contributors_viewer, className)}>
-          <span className={classes(styles.contributor, styles.label)}>Contributed by</span>
-          {
-            (editingFile.contributors || [user || { login: 'guest', avatar_url: faUser }]).map(contributor => (
-              <Button className={styles.contributor} icon={contributor.avatar_url} key={contributor.login}
-                      href={`https://github.com/${contributor.login}`}>
-                {contributor.login}
-              </Button>
-            ))
-          }
           <div className={styles.empty}>
             <div className={styles.empty}/>
             <Button className={styles.delete} icon={faTrashAlt} primary confirmNeeded
                     onClick={() => this.props.deleteFile(editingFile)}>
-              <Ellipsis>Delete File</Ellipsis>
+              <Ellipsis>删除文件</Ellipsis>
             </Button>
           </div>
         </div>

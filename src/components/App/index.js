@@ -235,6 +235,7 @@ class App extends BaseComponent {
         <Header className={styles.header} onClickTitleBar={this.handleClickTitleBar}
                 navigatorOpened={navigatorOpened} loadScratchPapers={this.loadScratchPapers}
                 ignoreHistoryBlock={this.ignoreHistoryBlock}/>
+
         <ResizableContainer className={styles.workspace} horizontal weights={workspaceWeights}
                             visibles={workspaceVisibles} onChangeWeights={this.handleChangeWorkspaceWeights}>
           <Navigator/>
@@ -243,6 +244,7 @@ class App extends BaseComponent {
             <CodeEditor ref={this.codeEditorRef}/>
           </TabContainer>
         </ResizableContainer>
+
         <ToastContainer className={styles.toast_container}/>
       </div>
     );

@@ -36,9 +36,9 @@ export const actions = {
   renameFile,
 };
 
-const homeTitles = ['Algorithm Visualizer'];
+const homeTitles = ['算法可视化交互平台'];
 const homeFiles = [ROOT_README_MD];
-const homeDescription = 'Algorithm Visualizer is an interactive online platform that visualizes algorithms from code.';
+const homeDescription = '高仿algorithm-visualizer';
 const defaultState = {
   algorithm: {
     categoryKey: 'algorithm-visualizer',

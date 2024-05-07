@@ -41,6 +41,7 @@ class TabContainer extends React.Component {
               </div>
             ))
           }
+          {/*一个加号*/}
           <div className={styles.title} onClick={() => this.handleAddFile()}>
             <FontAwesomeIcon fixedWidth icon={faPlus}/>
           </div>

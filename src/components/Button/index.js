@@ -33,7 +33,7 @@ class Button extends React.Component {
       if (confirming) {
         className = classes(styles.confirming, className);
         icon = faExclamationCircle;
-        children = <Ellipsis key="text">Click to Confirm</Ellipsis>;
+        children = <Ellipsis key="text">再次点击删除</Ellipsis>;
         const onClickOriginal = onClick;
         onClick = () => {
           if (onClickOriginal) onClickOriginal();

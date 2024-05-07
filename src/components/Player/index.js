@@ -153,13 +153,13 @@ class Player extends BaseComponent {
       <div className={classes(styles.player, className)}>
         <Button icon={faWrench} primary disabled={building} inProgress={building}
                 onClick={() => this.build(editingFile)}>
-          {building ? 'Building' : 'Build'}
+          {building ? '正在构建' : '构建'}
         </Button>
         {
           playing ? (
-            <Button icon={faPause} primary active onClick={() => this.pause()}>Pause</Button>
+            <Button icon={faPause} primary active onClick={() => this.pause()}>暂停</Button>
           ) : (
-            <Button icon={faPlay} primary onClick={() => this.resume(true)}>Play</Button>
+            <Button icon={faPlay} primary onClick={() => this.resume(true)}>播放</Button>
           )
         }
         <Button icon={faChevronLeft} primary disabled={!this.isValidCursor(cursor - 1)} onClick={() => this.prev()}/>
@@ -168,7 +168,7 @@ class Player extends BaseComponent {
         <Button icon={faChevronRight} reverse primary disabled={!this.isValidCursor(cursor + 1)}
                 onClick={() => this.next()}/>
         <div className={styles.speed}>
-          Speed
+          速度
           <InputRange
             classNames={{
               inputRange: styles.range,
